@@ -5,11 +5,9 @@ Imports System.Net.Mail
 Public Class UserSignUp
 
     Dim UserCSVFullLine As String = ""
-
     Private Sub UserSignUp_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Dim fullLine As String = ""
         FileOpen(1, "C:\UserCSV\" + ActiveUser + ".csv", OpenMode.Input)
-
         UserCSVFullLine = LineInput(1)
 
         Dim UserCSVItems() As String = Split(UserCSVFullLine, ",")
@@ -28,7 +26,6 @@ Public Class UserSignUp
         TxtGender.Text = UserCSVItems(4)
         TxtEmail.Text = UserCSVItems(0)
 
-
         LblTournament.Text = TournamentApplication
         Dim localpath As String = "C:\UserCSV\" + TournamentApplication + " Information.csv"
         'Downloads the tournament information file
@@ -38,7 +35,7 @@ Public Class UserSignUp
         fullLine = LineInput(1)
         Dim items() As String = Split(fullLine, ",")
         FileClose(1)
-        MsgBox(fullLine)
+
         ' This section checks what events are being run
         If items.Contains("Patterns") Then
             ChckPatterns.Visible = True
@@ -152,23 +149,19 @@ Public Class UserSignUp
 
             Try
                 'Uses google's SMTP client, hence the Gmail account
-                Dim EmailTransfer As New SmtpClient("smtp.gmail.com")
-                'Allows VB to access the gmail account
-                EmailTransfer.Credentials = New Net.NetworkCredential("TournamentManagerBot@gmail.com", "TournamentManager1234")
-                'Enables SSL and assigns port number
-                EmailTransfer.EnableSsl = True
-                EmailTransfer.Port = 587
+                Dim EmailTransfer As New SmtpClient("smtp.gmail.com") With {
+                    .Credentials = New Net.NetworkCredential("TournamentManagerBot@gmail.com", "TournamentManager1234"), 'Allows VB to access the gmail account
+                    .EnableSsl = True, 'Enables SSL and assigns port number
+                    .Port = 587
+                }
 
-                'Initialises the email capabilities of VB
-                Dim SuccessEmail As New MailMessage
-                'Assigns email sender
-                SuccessEmail.From = New MailAddress("TournamentManagerBot@gmail.com")
-                'Assigns the email header and contents
-                SuccessEmail.Subject = ("Tournament Signup Success")
-                SuccessEmail.Body = ("Signup to " + LblTournament.Text + " was successful.")
+                Dim SuccessEmail As New MailMessage With {'Initialises the email capabilities of VB
+                    .From = New MailAddress("TournamentManagerBot@gmail.com"), 'Assigns email sender
+                    .Subject = ("Tournament Signup Success"), 'Assigns the email header and contents
+                    .Body = ("Signup to " + LblTournament.Text + " was successful.")
+                }
                 'Sends email to email saved on form
                 SuccessEmail.To.Add(TxtEmail.Text)
-
                 'Sends the email
                 EmailTransfer.Send(SuccessEmail)
                 'Clears the email from memory

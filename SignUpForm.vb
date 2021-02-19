@@ -78,7 +78,7 @@ Public Class SignUp
         beltlevel.Add("Black Tag", 4)
         beltlevel.Add("Black", 5)
         If Directory.Exists("C:\UserCSV") Then ' Checks if UserCSV directory has already been generated
-            formlogin.ShowDialog() ' Opens the login form
+            LoginForm.ShowDialog() ' Opens the login form
         Else
             My.Computer.FileSystem.CreateDirectory("C:\UserCSV") ' Creates a directory in the C drive called UserCSV
             FTPFunctions.SynchroniseDirectory("C:\UserCSV\Clubs\", "/Clubs", "Download") ' Downloads the Clubs directory from the FTP server
@@ -219,7 +219,7 @@ Public Class SignUp
 
             'Replaces more than two spaces in the name section with a single space. Then splits the first name and second name, putting them in a list
             fsname = Regex.Replace(TxtName.Text, "[ ]{2,", " ", RegexOptions.None).Split(" ")
-            Dim CSVpath As String
+            Dim CSVpath As String = ""
             Dim loopend As Boolean = False
             Do Until loopend = True ' Runs until a unique username is generated
                 username = generate_username(fsname(0), fsname(1)) ' Calls on the generate_username function to generate the username
@@ -280,7 +280,7 @@ Public Class SignUp
             End If
             'Deletes the local club directory
             Directory.Delete("C:\UserCSV\Clubs\", True)
-            passform.ShowDialog()
+            PasswordForm.ShowDialog()
 
         End If
     End Sub

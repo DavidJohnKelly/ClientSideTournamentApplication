@@ -3,7 +3,7 @@ Imports System.Net
 
 Public Class TournamentCreator
     Private Sub TournamentCreator_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        ihome.Visible = False
+        InstructorHome.Visible = False
         SldrCapacity.Minimum = 20 ' Sets the minimum value of the capacity to 20
         SldrCapacity.Maximum = 1000 ' Sets the max value of the capacity to 1000
         SldrCapacity.TickFrequency = 980 ' Ensures that each movement of the slider increments the value by one
@@ -13,7 +13,7 @@ Public Class TournamentCreator
     End Sub
 
     Private Sub TournamentCreator_FormClosing(sender As Object, e As FormClosingEventArgs) Handles Me.FormClosing
-        ihome.Visible = True
+        InstructorHome.ShowDialog()
     End Sub
 
     Private Sub createCSV(ByVal localCSVPath As String, ByVal FTPCSVPath As String)

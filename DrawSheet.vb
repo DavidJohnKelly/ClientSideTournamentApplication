@@ -22,13 +22,12 @@ Public Class DrawSheet
 
         'Deletes the local copy of the file
         My.Computer.FileSystem.DeleteFile("C:\UserCSV\Tournament.csv")
-        'Saves the number of participants
 
         'Stops the program crashing when there are zero elements in the list
         Try
             participants = participantslist.Count
         Catch ex As Exception
-            participants = 0
+            participants = 0        'Saves the number of participants
         End Try
 
         'Adds the button to save results to the form
@@ -121,7 +120,7 @@ Public Class DrawSheet
 
                 Loop
                 'Divides the columns into even factors of two
-                categorysize = categorysize / 2
+                categorysize /= 2
                 column += 1
             Loop
 

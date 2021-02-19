@@ -2,11 +2,11 @@
 
 Public Class InstructorHome
     Private Sub InstructorHome_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        formlogin.Visible = False
+        LoginForm.Visible = False
     End Sub
 
     Private Sub BtnTournamentCreator_Click(sender As Object, e As EventArgs) Handles BtnTournamentCreator.Click
-        tournamentcreation.ShowDialog()
+        TournamentCreator.ShowDialog()
     End Sub
 
     Private Sub BtnTournamentsignup_Click(sender As Object, e As EventArgs) Handles BtnTournamentsignup.Click
@@ -22,7 +22,7 @@ Public Class InstructorHome
         FileClose(1)
         If infoitems(5) = "None" Then
             'Shows club creator if user not affiliated with a club
-            clubcreation.ShowDialog()
+            ClubCreator.ShowDialog()
         Else
             'Shows club viewer if user already affiliated with a club.
             ClubViewer.ShowDialog()

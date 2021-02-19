@@ -159,16 +159,16 @@ Public Class TournamentViewer
 
     End Sub
     Private Sub TournamentViewer_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        SignupORDrawSheets.Visible = False
         datagridfill()
     End Sub
 
     Private Sub TournamentViewer_Closing(sender As Object, e As CancelEventArgs) Handles Me.Closing
         GridTournaments.Rows.Clear() ' Clears the data grid
-        'ihome.Visible = True ' Reopens the instructor home screen
     End Sub
 
     Private Sub GridTournaments_CellContentClick(sender As Object, e As DataGridViewCellEventArgs) Handles GridTournaments.CellContentClick
-        'Try
+
         'Runs if an apply button was clicked
         If TypeOf GridTournaments.Columns(e.ColumnIndex) Is DataGridViewButtonColumn Then
 
@@ -182,15 +182,13 @@ Public Class TournamentViewer
             'Ensures that the application form knows which tournament the user is applying to
             TournamentApplication = tournamentname
             If ClubViewer.Bulkapply = "False" Then
-                selfsignup.ShowDialog()
+                UserSignUp.ShowDialog()
 
             Else
                 BulkSignup.Show()
             End If
         End If
-        'Catch
-        'MsgBox("ERROR")
-        'End Try
+
     End Sub
 
     Private Sub Search_KeyPress(sender As Object, e As KeyPressEventArgs) Handles Search.KeyPress

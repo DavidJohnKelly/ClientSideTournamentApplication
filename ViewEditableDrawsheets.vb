@@ -1,6 +1,7 @@
 ﻿Imports System.IO
 Public Class ViewEditableDrawsheets
     Private Sub ViewEditableDrawsheets_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        SignupORDrawSheets.Visible = False
         'Opens the UserCSV file
         Dim tournamentreader As New StreamReader("C:\UserCSV\" + ActiveUser + ".csv")
         'Defines a list to store the tournament information

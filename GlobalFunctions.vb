@@ -224,15 +224,8 @@ Module GlobalFunctions ' Globally accessible module created
 
     Public DrawSheetOrRunningOrder(1) As String
     Public ftphost As String = "ftp://ec2-35-179-79-245.eu-west-2.compute.amazonaws.com"
-    Public formlogin As LoginForm = New LoginForm() ' Initializes the Login form
-    Public passform As PasswordForm = New PasswordForm() ' Initializes the password form
-    Public signform As SignUp = New SignUp()
-    Public tournamentcreation As TournamentCreator = New TournamentCreator()
-    Public ihome As InstructorHome = New InstructorHome()
-    Public shome As studenthome = New studenthome()
-    Public selfsignup As UserSignUp = New UserSignUp()
     Public ActiveUser As String
-    Public clubcreation As ClubCreator = New ClubCreator()
     Public TournamentApplication As String
     Public tournamentFullLine As String
+
 End Module

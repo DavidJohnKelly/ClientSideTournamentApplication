@@ -5,7 +5,7 @@ Public Class LoginForm
 
     ' Runs when the Forgot Password link is clicked
     Private Sub LinkLabel1_LinkClicked(sender As Object, e As LinkLabelLinkClickedEventArgs) Handles LinkLabel1.LinkClicked
-        passform.ShowDialog() ' Shows the password form
+        PasswordForm.ShowDialog() ' Shows the password form
     End Sub
 
     Private Sub BtnConfirm_Click(sender As Object, e As EventArgs) Handles BtnConfirm.Click
@@ -40,15 +40,19 @@ Public Class LoginForm
                 Dim Privileges As String = LineInput(1)
                 FileClose(1)
                 If Privileges.Contains("Instructor") Then ' Checks if user is an instructor
-                    ihome.ShowDialog() ' Opens the instructor home form
+                    InstructorHome.ShowDialog() ' Opens the instructor home form
                 ElseIf Privileges.Contains("Student") Then ' Checks if user is a student
                     'Opens the student home form
-                    shome.ShowDialog()
+                    StudentHome.ShowDialog()
                 End If
             Else ' Otherwise, incorrect credentials
                 MsgBox("Error! Invalid Username or Password")
             End If
         End Using
+
+    End Sub
+
+    Private Sub LoginForm_Load(sender As Object, e As EventArgs) Handles MyBase.Load
 
     End Sub
 End Class

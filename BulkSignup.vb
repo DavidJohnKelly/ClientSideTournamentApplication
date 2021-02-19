@@ -20,8 +20,7 @@ Public Class BulkSignup
             x += 1
         Loop
         'Gets the list of events in tournament folder
-        Dim eventlist As New List(Of String)
-        eventlist = FTPFunctions.ListDirectoryNames("/Tournaments/" + LblTournamentName.Text)
+        Dim eventlist As List(Of String) = FTPFunctions.ListDirectoryNames("/Tournaments/" + LblTournamentName.Text)
         'Sets each checkbox to visible or not depending on presence in list
         If eventlist.Contains("Patterns") Then
             ChckPatterns.Visible = True

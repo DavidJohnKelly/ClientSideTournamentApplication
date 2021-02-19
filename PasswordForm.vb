@@ -14,7 +14,7 @@ Public Class PasswordForm
             username = Replace(file(0), "C:\UserCSV\", "") ' Removes the directory from the name
             username = Replace(username, ".csv", "") ' Removes .csv from the file name
             LblUsername.Text = "Your username is: " & username ' Outputs the username
-            signform.Dispose()
+            SignUp.Visible = False
         Catch
             username = ActiveUser
             LblUsername.Text = "Your username is " & username

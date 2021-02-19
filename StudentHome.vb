@@ -14,7 +14,7 @@
     End Sub
 
     Private Sub StudentHome_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        formlogin.Visible = False
+        LoginForm.Visible = False
     End Sub
 
     Private Sub BtnRunningOrder_Click(sender As Object, e As EventArgs) Handles BtnRunningOrder.Click

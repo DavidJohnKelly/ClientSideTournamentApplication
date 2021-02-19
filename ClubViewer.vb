@@ -12,9 +12,8 @@ Public Class ClubViewer
         userclub = infoitems(5)
         'Sets the userclub label to found user club
         LblClub.Text = userclub
-        Dim studentlist As New List(Of String)
         'Gets student usernames
-        studentlist = FTPFunctions.ListDirectoryNames("/Clubs/" + userclub + "/Students/")
+        Dim studentlist As List(Of String) = FTPFunctions.ListDirectoryNames("/Clubs/" + userclub + "/Students/")
         Dim x As Integer = 0
         Do Until x = studentlist.Count
             'Adds students to data grid
@@ -50,8 +49,7 @@ Public Class ClubViewer
             'Clears the data grid
             GridStudents.Rows.Clear()
             'Rereads student usernames
-            Dim studentlist As New List(Of String)
-            studentlist = FTPFunctions.ListDirectoryNames("/Clubs/" + userclub + "/Students/")
+            Dim studentlist As List(Of String) = FTPFunctions.ListDirectoryNames("/Clubs/" + userclub + "/Students/")
             Dim x As Integer = 0
             Do Until x = studentlist.Count
                 'Adds students to data grid if username contains search input
